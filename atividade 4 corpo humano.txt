@@ -1,0 +1,56 @@
+// criando a classe corpo humano
+public class CorpoHumano {
+    private float massa;      
+    private float volume;    
+    private float densidade;  
+
+    // Construtor o qual altera todos os dados do atributo de uma vez.
+    public CorpoHumano(float massaInicial, float volumeInicial) {
+        this.massa = massaInicial;
+        this.volume = volumeInicial;
+        calcularDensidade(); // Inicializa o cálculo de densidade com base nos dados inseridos pelo usuário.
+    }
+
+    
+    private void calcularDensidade() {
+        if (this.volume > 0) {
+            this.densidade = this.massa / this.volume;
+        } else {
+            this.densidade = 0;         }
+    }
+
+        public float getMassa() {
+        return this.massa;
+    }
+
+    public float getVolume() {
+        return this.volume;
+    }
+
+    public float getDensidade() {
+        return this.densidade;
+    }
+
+    // método setters aplicando, setters altera dados de apenas um atributo por vez.
+    public void setMassa(float novaMassa) {
+        if (novaMassa >= 0) { 
+            this.massa = novaMassa;
+            calcularDensidade(); 
+        } else {
+            System.out.println("insira um número positivo na MASSA");
+        }
+    }
+
+    public void setVolume(float novoVolume) {
+        if (novoVolume > 0) { 
+            this.volume = novoVolume;
+            calcularDensidade(); 
+
+// Recalcula a densidade após a mudança
+        } else {
+            System.out.println("Insira um valor maior que 0.");
+        }
+    }
+
+    // não há setters para densidade pois a mesma passa a ser calculada automaticamente.
+}
